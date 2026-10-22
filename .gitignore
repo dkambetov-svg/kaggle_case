@@ -1,0 +1,18 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Data, checkpoints, logs (not tracked)
+data/
+artifacts/data/
+artifacts/checkpoints/
+artifacts/logs/
+checkpoints/
+*.log
+
+# Environment / secrets
+.env
+
+# OS junk
+.DS_Store

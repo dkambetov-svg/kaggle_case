@@ -17,3 +17,4 @@ checkpoints/
 # OS junk
 .DS_Store
 reports/report.html
+reports/ai_session_export_*.json

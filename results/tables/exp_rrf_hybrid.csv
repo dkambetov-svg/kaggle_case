@@ -1,0 +1,15 @@
+stage,split,variant,MAP5,n_eval,value
+RRF_base,"main (train<=20, val21-30)",pop×airings (только база),0.4565122213268852,1241.0,
+RRF_component,"main (train<=20, val21-30)",PPR отдельно,0.4788060703733542,1241.0,
+RRF_component,"main (train<=20, val21-30)",AR отдельно,0.46178887993553525,1241.0,
+RRF_component,"main (train<=20, val21-30)",ALS отдельно,0.13985719401916,1241.0,
+RRF_component,"main (train<=20, val21-30)",CBF-new отдельно,0.01662906258393767,1241.0,
+RRF_greedy,"main (train<=20, val21-30)",pop_airings + PPR + ALS,0.47150886381950025,1241.0,
+RRF_meta,"main (train<=20, val21-30)",greedy_path,,,pop_airings=0.4565; pop_airings + PPR=0.4670; pop_airings + PPR + ALS=0.4715
+RRF_base,"early (train<=16, val17-20)",pop×airings (только база),0.37324721308479636,1216.0,
+RRF_component,"early (train<=16, val17-20)",PPR отдельно,0.3962086531432754,1216.0,
+RRF_component,"early (train<=16, val17-20)",AR отдельно,0.3744222861842114,1216.0,
+RRF_component,"early (train<=16, val17-20)",ALS отдельно,0.09187659904970757,1216.0,
+RRF_component,"early (train<=16, val17-20)",CBF-new отдельно,0.018076571637426892,1216.0,
+RRF_greedy,"early (train<=16, val17-20)",pop_airings + PPR + ALS,0.40177860014619876,1216.0,
+RRF_meta,"early (train<=16, val17-20)",greedy_path,,,pop_airings=0.3732; pop_airings + PPR=0.3860; pop_airings + PPR + ALS=0.4018

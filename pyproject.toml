@@ -7,6 +7,9 @@ dependencies = [
     "pandas",
     "numpy",
     "pyarrow",
+    "scikit-learn>=1.9.1",
+    "implicit>=0.7.3",
+    "scipy>=1.18.1",
 ]
 
 [build-system]

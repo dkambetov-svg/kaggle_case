@@ -1,0 +1,27 @@
+stage,split,variant,value,MAP5,n_eval
+PPR_meta,"main (train<=20, val21-30)",graph_users,4833.0,,
+PPR_meta,"main (train<=20, val21-30)",graph_items,2900.0,,
+PPR_meta,"main (train<=20, val21-30)",graph_edges,563456.0,,
+PPR_meta,"main (train<=20, val21-30)",zero_degree_users,0.0,,
+PPR_meta,"main (train<=20, val21-30)",zero_degree_items,0.0,,
+PPR_meta,"main (train<=20, val21-30)",global_residual_L1,0.003814886408050618,,
+PPR_meta,"main (train<=20, val21-30)",global_mass_check,1.0000000000000002,,
+PPR_global,"main (train<=20, val21-30)",global_pagerank_alpha=0.85,,0.44786999731399213,1241.0
+PPR_meta,"main (train<=20, val21-30)",ppr_residual_L1_mean,0.015261519189578968,,
+PPR_meta,"main (train<=20, val21-30)",ppr_batch_time_s,12.36,,
+PPR_meta,"main (train<=20, val21-30)",ppr_n_cold_users,8.0,,
+PPR_personalized,"main (train<=20, val21-30)",ppr_alpha=0.85_restart=own_items,,0.4783897394574263,1241.0
+PPR_reference,"main (train<=20, val21-30)",popularity_recent4w_unique,,0.44786999731399213,1241.0
+PPR_meta,"early (train<=16, val17-20)",graph_users,4793.0,,
+PPR_meta,"early (train<=16, val17-20)",graph_items,1959.0,,
+PPR_meta,"early (train<=16, val17-20)",graph_edges,340173.0,,
+PPR_meta,"early (train<=16, val17-20)",zero_degree_users,0.0,,
+PPR_meta,"early (train<=16, val17-20)",zero_degree_items,0.0,,
+PPR_meta,"early (train<=16, val17-20)",global_residual_L1,0.006405679114820149,,
+PPR_meta,"early (train<=16, val17-20)",global_mass_check,1.0000000000000002,,
+PPR_global,"early (train<=16, val17-20)",global_pagerank_alpha=0.85,,0.37324721308479636,1216.0
+PPR_meta,"early (train<=16, val17-20)",ppr_residual_L1_mean,0.015261519189578954,,
+PPR_meta,"early (train<=16, val17-20)",ppr_batch_time_s,7.08,,
+PPR_meta,"early (train<=16, val17-20)",ppr_n_cold_users,1.0,,
+PPR_personalized,"early (train<=16, val17-20)",ppr_alpha=0.85_restart=own_items,,0.39579267178362637,1216.0
+PPR_reference,"early (train<=16, val17-20)",popularity_recent4w_unique,,0.37324721308479636,1216.0

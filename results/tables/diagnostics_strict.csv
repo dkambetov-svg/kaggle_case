@@ -1,0 +1,19 @@
+method,definition,MAP@5,n_users_evaluated,n_rel_mean,n_rel_median
+_meta,strict,,1241,46.14686998394863,33.0
+_meta,top20,,1246,19.784911717495987,20.0
+Popularity (Recent 4w),strict,0.44786999731399313,1241,,
+Popularity (Recent 4w),top20,0.39858480470839963,1246,,
+ALS f=64,strict,0.11813613573283202,1241,,
+ALS f=64,top20,0.0995452113429641,1246,,
+Repeat (train full 11-20),strict,0.4841901692183711,1241,,
+Repeat (train full 11-20),top20,0.48552166934189345,1246,,
+CBF (full pool),strict,0.08990196078431378,1241,,
+CBF (full pool),top20,0.06795077581594448,1246,,
+(a) Popularity by sum seconds,strict,0.4191082460381425,1241,,
+(a) Popularity by sum seconds,top20,0.3804949170679497,1246,,
+(b) Popularity x log(1+airings target),strict,0.45651222132688607,1241,,
+(b) Popularity x log(1+airings target),top20,0.3943311931514184,1246,,
+(c) CBF by channels,strict,0.41822186408810036,1241,,
+(c) CBF by channels,top20,0.3553397538790794,1246,,
+(d) Repeat + (b) fill,strict,0.48423045930700925,1241,,
+(d) Repeat + (b) fill,top20,0.48551899411449906,1246,,

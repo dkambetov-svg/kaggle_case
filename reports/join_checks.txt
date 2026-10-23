@@ -1,0 +1,5 @@
+=== Reports/join_checks.txt ===
+Users in submission found in interactions: 1258
+Timezone shift (0 offset): 0.6298 (max)
+Overlap corrections: 1412
+Interactions pairs: 1,455,642

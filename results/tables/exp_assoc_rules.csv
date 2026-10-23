@@ -1,0 +1,16 @@
+stage,split,variant,value,MAP5,n_eval
+AR_meta,"main (train<=20, val21-30)",n_transactions,44538,,
+AR_meta,"main (train<=20, val21-30)",n_items,2900,,
+AR_meta,"main (train<=20, val21-30)",n_frequent_pairs,18281,,
+AR_meta,"main (train<=20, val21-30)",n_rules_lift_gt1,35268,,
+AR_meta,"main (train<=20, val21-30)",mining_time_s,5.07,,
+AR_model,"main (train<=20, val21-30)",assoc_rules_sum_confidence_last4w,,0.46582191780821863,1241.0
+AR_reference,"main (train<=20, val21-30)",popularity_recent4w_unique,,0.44786999731399213,1241.0
+AR_meta,"early (train<=16, val17-20)",n_transactions,27025,,
+AR_meta,"early (train<=16, val17-20)",n_items,1959,,
+AR_meta,"early (train<=16, val17-20)",n_frequent_pairs,20544,,
+AR_meta,"early (train<=16, val17-20)",n_rules_lift_gt1,39880,,
+AR_meta,"early (train<=16, val17-20)",mining_time_s,3.0,,
+AR_model,"early (train<=16, val17-20)",assoc_rules_sum_confidence_last4w,,0.37466899671052717,1216.0
+AR_reference,"early (train<=16, val17-20)",popularity_recent4w_unique,,0.37324721308479636,1216.0
+AR_manual_check,"main (train<=20, val21-30)",rule 90074277->90079000 manual vs code match,OK,,

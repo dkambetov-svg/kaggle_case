@@ -1,0 +1,23 @@
+stage,split,variant,value,MAP5,n_eval
+CBFHW2_meta,"main (train<=20, val21-30)",n_candidates_known,2152.0,,
+CBFHW2_meta,"main (train<=20, val21-30)",n_candidates_all_vec,3973.0,,
+CBFHW2_meta,"main (train<=20, val21-30)",n_tokens_vocab,248.0,,
+CBFHW2_meta,"main (train<=20, val21-30)",n_slots,16864.0,,
+CBFHW2_diag,"main (train<=20, val21-30)",relevant_known_slots,40195.0,,
+CBFHW2_diag,"main (train<=20, val21-30)",relevant_new_slots,17304.0,,
+CBFHW2_model,"main (train<=20, val21-30)",cbf_hw2_cosine_jaccard_slotpop,,0.012895514370131603,1241.0
+CBFHW2_novelty,"main (train<=20, val21-30)",new_items_in_top5,4768.0,,
+CBFHW2_novelty,"main (train<=20, val21-30)",top5_slots_total,6165.0,,
+CBFHW2_novelty,"main (train<=20, val21-30)",new_items_relevant,71.0,,
+CBFHW2_reference,"main (train<=20, val21-30)",popularity_recent4w_unique,,0.44786999731399213,1241.0
+CBFHW2_meta,"early (train<=16, val17-20)",n_candidates_known,1958.0,,
+CBFHW2_meta,"early (train<=16, val17-20)",n_candidates_all_vec,3944.0,,
+CBFHW2_meta,"early (train<=16, val17-20)",n_tokens_vocab,240.0,,
+CBFHW2_meta,"early (train<=16, val17-20)",n_slots,14108.0,,
+CBFHW2_diag,"early (train<=16, val17-20)",relevant_known_slots,14390.0,,
+CBFHW2_diag,"early (train<=16, val17-20)",relevant_new_slots,11896.0,,
+CBFHW2_model,"early (train<=16, val17-20)",cbf_hw2_cosine_jaccard_slotpop,,0.013415113304093559,1216.0
+CBFHW2_novelty,"early (train<=16, val17-20)",new_items_in_top5,4453.0,,
+CBFHW2_novelty,"early (train<=16, val17-20)",top5_slots_total,6075.0,,
+CBFHW2_novelty,"early (train<=16, val17-20)",new_items_relevant,47.0,,
+CBFHW2_reference,"early (train<=16, val17-20)",popularity_recent4w_unique,,0.37324721308479636,1216.0

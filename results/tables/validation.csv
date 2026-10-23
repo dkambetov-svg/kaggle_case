@@ -1,0 +1,15 @@
+method,MAP@5,users_evaluated,seed,time_s
+Popularity (Global),0.6197188650413362,4799,42,
+Popularity (Recent 4w),0.621886272603097,4799,42,
+CBF (full pool),0.12706501354448846,4799,42,
+CBF (re-rank top-50 pop),0.23438401518834898,4799,42,
+ALS f=64 reg=0.05 it=20,0.2447789470028462,4799,42,3.04
+ALS f=32 reg=0.05 it=20,0.30298760158366117,4799,42,11.39
+ALS f=64 reg=0.1 it=20,0.24597653446319664,4799,42,13.64
+ALS f=128 reg=0.05 it=15,0.21553651223634449,4799,42,14.0
+"Hybrid ALS+Pop (rank fusion, w=0.05)",0.6209578384385719,4799,42,
+"Hybrid ALS+Pop (rank fusion, w=0.1)",0.6191197240165868,4799,42,
+"Hybrid ALS+Pop (rank fusion, w=0.2)",0.6154241624412575,4799,42,
+"Hybrid ALS+Pop (rank fusion, w=0.3)",0.6090516542798359,4799,42,
+"Hybrid ALS+Pop (rank fusion, w=0.5)",0.5826917644879817,4799,42,
+"Hybrid ALS+Pop (rank fusion, w=0.7)",0.5167543006644938,4799,42,

@@ -1,0 +1,25 @@
+check,value
+n_relevant_mean_all4799,97.36007501562825
+n_relevant_median_all4799,78.0
+n_relevant_mean_sub1260,128.12118780096307
+n_relevant_median_sub1260,108.0
+n_users_val_all,4799
+n_users_val_sub_intersection,1246
+sub_users_without_val_relevant,14
+MAP5_pop_recent4w_all4799,0.6218862726030968
+MAP5_pop_recent4w_sub_intersection,0.7335714285714278
+n_eval_pop_all4799,4799
+n_eval_pop_sub_intersection,1246
+implicit_version,0.7.3
+als_matrix_shape_users,4833
+als_matrix_shape_items,2900
+als_matrix_nnz,563456
+MAP5_als_f64_all4799,0.2447789470028471
+MAP5_als_f64_sub_intersection,0.22641519529159956
+MAP5_repeat_train_full_11_20_all4799,0.5629240466763982
+MAP5_repeat_train_full_11_20_sub_intersection,0.6735366506153005
+MAP5_repeat_train_last4w_17_20_all4799,0.4689036489083364
+MAP5_repeat_train_last4w_17_20_sub_intersection,0.5724505082932037
+best_method_name,Popularity (Recent 4w)
+best_method_map5,0.6218862726030968
+baseline_pop_map5,0.6218862726030968

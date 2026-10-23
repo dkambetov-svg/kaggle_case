@@ -1,0 +1,4 @@
+variant,params,MAP5_main,MAP5_early,MAP5_mean,time_s,seed,baseline_pool500
+E8 pool=500,"pool=500; ppr={'restart': 0.7, 'attr_weight': 0.7}; als={'factors': 128, 'iterations': 20, 'reg': 0.05}; fusion={'k_rrf': 10, 'w_pop': 1.0, 'w_ppr': 2.0, 'w_als': 1.0}",0.5478706688154708,0.47153440241228006,0.5097025356138754,34.6,42,True
+E8 pool=1000,"pool=1000; ppr={'restart': 0.7, 'attr_weight': 0.7}; als={'factors': 128, 'iterations': 20, 'reg': 0.05}; fusion={'k_rrf': 10, 'w_pop': 1.0, 'w_ppr': 2.0, 'w_als': 1.0}",0.54695205479452,0.4715926535087714,0.5092723541516457,39.0,42,False
+E8 pool=2000,"pool=2000; ppr={'restart': 0.7, 'attr_weight': 0.7}; als={'factors': 128, 'iterations': 20, 'reg': 0.05}; fusion={'k_rrf': 10, 'w_pop': 1.0, 'w_ppr': 2.0, 'w_als': 1.0}",0.5472555734622611,0.47042968749999947,0.5088426304811302,41.3,42,False

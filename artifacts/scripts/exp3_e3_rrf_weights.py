@@ -35,9 +35,11 @@ BEST_TAU = 8.0      # E2, restart=raw
 
 
 def tripartite_rankings(base, restart_src, pool_full, rank_pop, val_users, attr_weight,
-                        decay_tau=None):
+                        decay_tau=None, alpha=None, k_pool=POOL):
     """PPR-ранжирование по трёхдольному графу. Возвращает (rankings, scores_matrix)
-    scores_matrix — (n_pool, B) в порядке pool_full."""
+    scores_matrix — (n_pool, B) в порядке pool_full.
+    alpha (exp4/E6): вероятность продолжения = 1 − restart; по умолчанию 1 − RESTART.
+    k_pool (exp4/E8): длина ранжирования на пользователя (по умолчанию POOL)."""
     nU = base["nU"]
     I_off = nU
     n_nodes = nU + base["nI"] + base["nA"]
@@ -51,12 +53,12 @@ def tripartite_rankings(base, restart_src, pool_full, rank_pop, val_users, attr_
         idxs, ws = restart_src[ui]
         restart_mat[I_off + idxs, b] = ws
     T = build_transition(base, attr_weight)
-    P = ppr_tripartite(T, restart_mat)
+    P = ppr_tripartite(T, restart_mat, alpha=alpha)
     scores = P[I_off + pool_local, :]  # (n_pool, B)
     rankings = {}
     for b, u in enumerate(val_users):
         sc = dict(zip(pool_full, scores[:, b]))
-        rankings[u] = rank_list_from_scores(sc, rank_pop, k=POOL)
+        rankings[u] = rank_list_from_scores(sc, rank_pop, k=k_pool)
     for u in val_users:  # cold: нулевые скоры -> порядок пула (tie_rank)
         if u not in rankings:
             rankings[u] = list(pool_full)

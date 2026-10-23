@@ -182,10 +182,10 @@ def build_transition(base, attr_weight):
     return row_normalize(T)
 
 
-def ppr_tripartite(T, restart_mat, n_iter=N_ITER):
-    """P = alpha*(T^T P) + (1-alpha)*restart; alpha = 1 − RESTART.
-    restart_mat (n_nodes×B): ненулевой только блок программ (или нули для cold)."""
-    alpha = 1.0 - RESTART
+def ppr_tripartite(T, restart_mat, n_iter=N_ITER, alpha=None):
+    """P = alpha*(T^T P) + (1-alpha)*restart; alpha = 1 − RESTART (или заданный alpha)."""
+    if alpha is None:
+        alpha = 1.0 - RESTART
     Tt = T.T.tocsr()
     P = restart_mat.copy()
     for _ in range(n_iter):

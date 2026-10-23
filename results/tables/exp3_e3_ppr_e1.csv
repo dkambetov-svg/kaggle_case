@@ -1,0 +1,2 @@
+variant,params,MAP5_main,MAP5_early,MAP5_mean,time_s,seed
+"E3-fusion k=20 w=(1,2,1) + PPR E1 (без decay)",attr_weight=0.5; decay=none; restart=0.5; w_pop=1.0; w_ppr=2.0; w_als=1.0; k_rrf=20; n_iter=30,0.5365245321873032,0.46317616959064295,0.4998503508889731,,42

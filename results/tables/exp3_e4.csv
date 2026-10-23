@@ -1,0 +1,6 @@
+variant,params,MAP5_main,MAP5_early,MAP5_mean,time_s,seed
+референс: pop+PPR_best+ALS RRF k=60 (без буста),w_pop=1; w_ppr=1; w_als=1; k_rrf=60; ppr=E1aw0.5+E2tau8raw,0.5124626197510957,0.4370648300438586,0.4747637248974772,,42
+E4 a=0.25 boost отдельно,a=0.25; ppr=E1aw0.5+E2tau8raw; airings=val-окно; component=PPR*(1+airings)^a,0.4492414271644733,0.385667945906433,0.41745468653545315,0.606,42
+E4 a=0.25 RRF k=60 boost+ALS,a=0.25; ppr=E1aw0.5+E2tau8raw; airings=val-окно; component=PPR*(1+airings)^a; fusion=+ALS k=60 w=1/1,0.4278041901692186,0.3393416483918128,0.38357291928051573,0.776,42
+E4 a=0.5 RRF k=60 boost+ALS,a=0.5; ppr=E1aw0.5+E2tau8raw; airings=val-окно; component=PPR*(1+airings)^a; fusion=+ALS k=60 w=1/1,0.39755304861670754,0.318188961988304,0.35787100530250576,0.774,42
+E4 a=0.5 boost отдельно,a=0.5; ppr=E1aw0.5+E2tau8raw; airings=val-окно; component=PPR*(1+airings)^a,0.36543669979407256,0.3127654422514619,0.3391010710227672,0.61,42

@@ -1,0 +1,5 @@
+variant,params,MAP5_main,MAP5_early,MAP5_mean,time_s,seed,new_top5_main,new_top5_unique_main,new_top5_rel_main,new_top5_early,new_top5_unique_early,new_top5_rel_early,usernew_top5_main,usernew_rel_main,usernew_top5_early,usernew_rel_early
+E1 attr_weight=0.5,attr_weight=0.5; restart=0.5; n_iter=30; attrs=ch/cat/gen; graph=tripartite,0.5427124183006531,0.4642726608187127,0.5034925395596829,21.2,42,0,0,0,0,0,0,59,16,22,2
+E1 attr_weight=0.3,attr_weight=0.3; restart=0.5; n_iter=30; attrs=ch/cat/gen; graph=tripartite,0.5410838033843666,0.46495865314327434,0.5030212282638205,20.4,42,0,0,0,0,0,0,59,16,22,2
+E1 attr_weight=0.1,attr_weight=0.1; restart=0.5; n_iter=30; attrs=ch/cat/gen; graph=tripartite,0.5352195809830771,0.4607718841374265,0.49799573256025176,20.4,42,0,0,0,0,0,0,59,17,22,3
+E1 attr_weight=0.0 (контроль: бипартитный),attr_weight=0.0; restart=0.5; n_iter=30; attrs=ch/cat/gen; graph=tripartite,0.5333313188289002,0.4576838907163739,0.495507604772637,20.1,42,0,0,0,0,0,0,59,17,22,3

@@ -1,0 +1,6 @@
+variant,params,MAP5_main,MAP5_early,MAP5_mean,time_s,seed,usernew_top5_main,usernew_rel_main,usernew_top5_early,usernew_rel_early
+E2 tau=8 restart=raw,attr_weight=0.5; decay_tau=8; restart=raw; restart_p=0.5; n_iter=30,0.5432737935356787,0.4645248538011686,0.5038993236684237,23.4,42,59,16,22,2
+"E2 baseline (без decay, как E1 aw=0.5)",attr_weight=0.5; decay=none; restart=raw; restart_p=0.5; n_iter=30,0.5427124183006531,0.4642726608187127,0.5034925395596829,21.6,42,59,16,22,2
+E2 tau=4 restart=raw,attr_weight=0.5; decay_tau=4; restart=raw; restart_p=0.5; n_iter=30,0.54268824424747,0.4642425073099405,0.5034653757787052,21.8,42,59,16,22,2
+E2 tau=8 restart=decayed,attr_weight=0.5; decay_tau=8; restart=decayed; restart_p=0.5; n_iter=30,0.5374160623153357,0.4647583150584791,0.5010871886869074,22.7,42,59,16,22,2
+E2 tau=4 restart=decayed,attr_weight=0.5; decay_tau=4; restart=decayed; restart_p=0.5; n_iter=30,0.5281909750201442,0.46836622807017475,0.49827860154515946,21.4,42,59,16,22,2

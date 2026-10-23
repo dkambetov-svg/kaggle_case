@@ -30,30 +30,32 @@ kaggle competitions submit -c sweettv-tv-program-recommender \
 kaggle competitions submissions -c sweettv-tv-program-recommender
 ```
 
-## Финальный сабмит (зафиксирован 23.10.2026)
+## Финальный сабмит (зафиксирован 23.10.2026, раунд exp4)
 
-- **Файл:** `submission.csv` (корень; копия `data/submission_rrf2_a_ppr05_als.csv`)
-- **Метод:** RRF (rank-score fusion, k=60) из трёх ранжирований на общем пуле топ-500
+- **Файл:** `submission.csv` (корень; копия `data/submission_exp4_k10.csv`)
+- **Метод:** RRF (rank-score fusion, **k=10**) из трёх ранжирований на общем пуле топ-500
   (pop×log(1+число эфиров в 31–42)):
   1. `pop_airings` — популярность (уникальные зрители, недели 27–30) × log(1+эфиры);
-  2. `PPR` — персонализированный PageRank по двудольному графу пользователь–программа
-     (веса рёбер log(1+секунды), row-normalized транзишены в обе стороны, restart-вектор =
-     программы пользователя пропорционально весам, **restart = 0.5**, 30 итераций, батч через
-     `scipy.sparse`, `SEED=42`, implicit ALS f=64/reg=0.05/iters=20);
-  3. `ALS` — implicit ALS, ранжирование по скору в пуле.
+  2. `PPR` — трёхдольный граф пользователь–программа–атрибут, **restart = 0.5**
+     (α = 0.5), **attr_weight = 0.5**, без decay, 30 итераций, батч через
+     `scipy.sparse`, `SEED=42`;
+  3. `ALS` — implicit ALS, f=64 / reg=0.05 / 20 итераций, ранжирование по скору в пуле.
+  Веса fusion: w = (1, 2, 1) (популярность, PPR, ALS).
 - **Обучение:** недели 11–30 (весь лог). **Тестовые просмотры (31–42) не используются** —
-  расписание 31–42 применяется только для связей программа–канал–жанр и числа эфиров.
-- **Kaggle: public MAP@5 = 0.32691, private MAP@5 = 0.31441** (лучший результат проекта).
-- Генерация: `uv run python artifacts/scripts/exp_rrf2_submit.py`
-  (variant `a_ppr05_als` из `submission_rrf2_a_ppr05_als.csv`).
+  расписание 31–42 применяется только для эфиров/каналов/жанров и числа эфиров.
+- **Kaggle: public MAP@5 = 0.34586, private MAP@5 = 0.32383** (run-id 57554720,
+  лучший результат проекта; прежний финал 0.34487/0.32361 — run-id 57544938).
+- Генерация: `uv run python artifacts/scripts/exp4_submit.py k10`.
 
 Правило смены финала: новый сабмит становится финалом, только если он лучше и по public,
-и по private (минимизация риска подгонки под половину теста).
+и по private (минимизация риска подгонки под половину теста). exp4_k10 выполнил правило
+(+0.00099 / +0.00022 против exp3_e3b); полный стек exp4 (winner, 0.34591/0.31580) —
+нет, поэтому отклонён.
 
 ## Структура репозитория
 
 ```
-submission.csv             — ФИНАЛЬНЫЙ сабмит (RRF k=60: pop×airings + PPR restart=0.5 + ALS)
+submission.csv             — ФИНАЛЬНЫЙ сабмит (exp4_k10: RRF k=10, w=(1,2,1))
 artifacts/scripts/
   eda.py                 — потоковый EDA (stdlib csv), пишет docs/facts.md
   join_interactions.py   — джойн лог×расписание (канал + overlap интервалов), -> user_interactions.parquet
@@ -68,12 +70,21 @@ artifacts/scripts/
   exp_rrf_hybrid.py      — RRF k=60 + greedy ablation компонент (PPR/AR/ALS/CBF-new)
   exp_rrf_submit.py      — сабмиты RRF (best/ppr/ar)
   exp_grid_rp3_ease_ppr.py / exp_grid_rp3_ease_ppr_extra.py — grid: RP3beta, EASE, PPR restart
-  exp_rrf2_submit.py     — ФИНАЛЬНЫЕ сабмиты: RRF с PPR restart=0.5 (вариант a — финал)
+  exp_rrf2_submit.py     — сабмиты RRF с PPR restart=0.5 (вариант a — прежний финал)
+  exp3_*.py              — раунд exp3: трёхдольный PPR (e1), decay (e2), сетка RRF (e3),
+                           эфирный буст (e4), сабмиты (submit, submit_e3b)
+  exp4_*.py              — раунд exp4: сетка ALS (e5), сетка PPR + сходимость (e6),
+                           сетка fusion (e7), пул (e8), примеры §7 (examples_full),
+                           генератор сабмитов (submit), финальная оценка (final_eval)
   examples.py            — §7: тяжёлый/лёгкий пользователь, Top-5 каждого метода
 docs/facts.md            — факты EDA (шаг 2)
 docs/improve_plan.md     — план улучшений (этапы §4A–E)
+docs/research/claim-ledger.md — реестр утверждений (C1.x, C2.x) со статусами и источниками
 reports/join_checks.txt  — проверки джойна
-reports/examples.md      — §7 примеры рекомендаций
+reports/examples.md      — §7 примеры рекомендаций (исходный объём, сохранён)
+reports/examples_full.md — §7 примеры рекомендаций (все 7 методов)
+reports/report.md        — отчёт для экзамена §1–§9 (+PDF см. §9)
+experiments/             — ноутбуки экспериментов (артефакты раундов exp3/exp4)
 results/tables/          — все таблицы экспериментов (validation, diagnostics*, exp_stage1*,
                            exp_rrf*, exp_grid_rp3_ease_ppr*, exp_ppr, exp_assoc_rules, exp_cbf_hw2)
 data/submission_*.csv    — все отправленные варианты сабмитов (не перезаписываются)
@@ -101,10 +112,15 @@ data/submission_*.csv    — все отправленные варианты с
 
 ## Статус
 
-**Финал: `submission.csv` — RRF k=60 (pop×log(1+airings) + PPR restart=0.5 + ALS), Kaggle
-public 0.32691 / private 0.31441.** Реализовано и оценено на Kaggle 13 сабмитов; локальная
-строгая валидация (MAP@5 на неделях 21–30 и 17–20) использовалась для отсева, окончательные
-решения принимались по Kaggle public+private. Ключевые наблюдения: (1) рост restart PPR
-0.15→0.5 подтвердился на Kaggle (+0.019 public); (2) чистые повторы истории и CBF по
-контентным токенам провалились на Kaggle, вопреки локальной валидации; (3) расхождение
-локальной валидации и Kaggle — отдельно задокументированное ограничение (README, отчёт).
+**Финал: `submission.csv` = `data/submission_exp4_k10.csv` — RRF k=10, w=(1,2,1) над
+pop×log(1+airings) + PPR (трёхдольный, restart=0.5, attr_weight=0.5, без decay) + ALS
+64/0.05/20; Kaggle public 0.34586 / private 0.32383 (run-id 57554720).** На Kaggle 22
+сабмита (см. Приложение A отчёта); локальная строгая валидация (MAP@5 на неделях 21–30
+и 17–20) использовалась только как отсев («не хуже референса на обоих сплитах»),
+окончательные решения принимались по Kaggle public+private. Ключевые наблюдения:
+(1) прирост финала над предыдущим финалом даёт один k: 20 → 10 (+0.00099/+0.00022);
+(2) расхождение знаков локальной валидации и Kaggle задокументировано в 4 случаях
+(C1.4): локально лучший PPR restart=0.7/aw=0.7 на Kaggle хуже (0.34122/0.31624);
+(3) чистые повторы истории и CBF по контентным токенам провалились на Kaggle, вопреки
+локальной валидации; (4) чистый PPR на сплите main чуть выше гибрида локально, но на
+Kaggle гибрид сильнее на +0.0228 public.

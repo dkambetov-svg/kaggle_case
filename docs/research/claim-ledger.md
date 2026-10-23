@@ -91,18 +91,22 @@
 **Closest prior work and gap**: прежние расхождения (repeat, window=2w, fusion, CBF); гап: систематическая оценка корреляции знаков.
 **Falsifier or counterexample**: вариант, локально худший контроля на обоих сплитах, на Kaggle окажется лучше — либо локально лучший, на Kaggle хуже.
 **Required support**: ≥5 пар вариантов с согласованным знаком локально и на Kaggle.
-**Current support**: Расхождения задокументированы: чистый PPR локально 0.5427/0.4643 > контроль финала 0.5015/0.4318, на Kaggle 0.32306/0.29313 < 0.32691/0.31441; fusion локально хуже чистого PPR (exp3_e3.csv:3 против :2), на Kaggle fusion лучше (0.34487 против 0.32306); decay локально +0.0006, на Kaggle −0.00119 (public, fusion-пара 57544807 против 57544938). Согласование по знаку подтверждено для атрибутов (C1.1 локально, fusion-сабмиты на Kaggle).
+**Current support**: Расхождения задокументированы: чистый PPR локально 0.5427/0.4643 > контроль финала 0.5015/0.4318, на Kaggle 0.32306/0.29313 < 0.32691/0.31441; fusion локально хуже чистого PPR (exp3_e3.csv:3 против :2), на Kaggle fusion лучше (0.34487 против 0.32306); decay локально +0.0006, на Kaggle −0.00119 (public, fusion-пара 57544807 против 57544938); **раунд exp4**: PPR restart=0.7/aw=0.7 локально +0.0059 mean (exp4_ppr.csv:2 против :8), на Kaggle −0.00365/−0.00737 (57554703 против 57544938) — 4-е расхождение; при этом k=10 изолированно знак согласовал: локально все верхние строки E7 при k=10, на Kaggle +0.00099/+0.00022 (57554720 против 57544938). Согласование по знаку подтверждено для атрибутов (C1.1 локально, fusion-сабмиты на Kaggle) и для k=10 (exp4).
 **Evidence sources**:
 - results/tables/exp3_e1.csv:2
 - results/tables/exp3_e3.csv:2
 - results/tables/exp3_e3.csv:3
+- results/tables/exp4_ppr.csv:2
+- results/tables/exp4_ppr.csv:8
 - kaggle-run:57544801
 - kaggle-run:57544807
 - kaggle-run:57544938
 - kaggle-run:57543402
-**Counterevidence and failures**: см. Current support — три расхождения знака в раунде exp3 (чистый PPR, fusion-знак, decay); прежние: repeat, window=2w, CBF-инверсия токенов.
-**Permitted manuscript wording**: Локальная валидация использовалась только как отсев (фильтр «не хуже финала на обоих сплитах»), но знаки эффектов расходятся с Kaggle не менее чем в трёх случаях раунда exp3, поэтому окончательные решения принимались по public+private.
-**Next cheapest decisive action**: на будущее — собирать таблицу знаков «локальный эффект vs Kaggle-эффект» по каждому сабмиту (13+5 = 18 пар).
+- kaggle-run:57554703
+- kaggle-run:57554720
+**Counterevidence and failures**: см. Current support — четыре расхождения знака (три раунда exp3 + PPR-этап exp4); прежние: repeat, window=2w, CBF-инверсия токенов.
+**Permitted manuscript wording**: Локальная валидация использовалась только как отсев (фильтр «не хуже финала на обоих сплитах»), но знаки эффектов расходятся с Kaggle не менее чем в четырёх случаях (раунды exp3 и exp4), поэтому окончательные решения принимались по public+private.
+**Next cheapest decisive action**: на будущее — собирать таблицу знаков «локальный эффект vs Kaggle-эффект» по каждому сабмиту (19+3 пары).
 **Depends on**: —
 
 ## C1.5 (rejected)
@@ -143,21 +147,23 @@
 **Next cheapest decisive action**: указать структурное ограничение в §5 отчёта (пул и fallback).
 **Depends on**: —
 
-## C2 (candidate)
+## C2 (rejected)
 **Type**: empirical
-**Status**: candidate
+**Status**: rejected
 **Claim**: Конфигурация exp4 (ALS f=128/it=20/reg=0.05 + PPR restart=0.7/aw=0.7 alpha=0.3 + RRF k=10 w=(1,2,1), пул-500) превосходит победителя exp3 (exp3_e3b: public 0.34487 / private 0.32361, run-id 57544938) по обеим половинам Kaggle-теста.
 **Scope and exclusions**: только этот конкурс и эта конфигурация против exp3_e3b; утверждение о Kaggle public+private, не о локальной валидации (она — отдельное C2.1).
 **Assumptions**: формат сабмита, пул топ-500, train 11–30 идентичны exp3_e3b; просмотры 31–42 не использованы; локальный фильтр (C2.1) корректно отбирает варианты.
 **Closest prior work and gap**: exp3_e3b (run-id 57544938) — та же архитектура с PPR restart=0.5/aw=0.5, ALS 64/0.05/20, k=20; гап: новые параметры E5–E8 на Kaggle не проверены.
 **Falsifier or counterexample**: сабмит exp4-конфигурации даёт public или private ниже 0.34487/0.32361.
 **Required support**: сабмит с public и private выше exp3_e3b + воспроизводимый скрипт exp4_submit.py variant=winner.
-**Current support**: — (кандидат: сабмит exp4 не отправлен; локальное обоснование — C2.1)
+**Current support**: — (отвергнуто: сабмит не прошло правило обеих половин)
 **Evidence sources**:
+- kaggle-run:57554681
+- kaggle-run:57544938
 - artifacts/scripts/exp4_submit.py
-**Counterevidence and failures**: знаки локальных и Kaggle-эффектов расходились в раунде exp3 не менее чем в 3 случаях (C1.4) — исход не предрешён локальным приростом.
-**Permitted manuscript wording**: Конфигурация exp4 отобрана по локальной валидации (C2.1); её Kaggle-результат не получен — утверждение о превосходстве не формулируется до сабмита.
-**Next cheapest decisive action**: отправить data/submission_exp4_winner.csv на Kaggle и записать run-id.
+**Counterevidence and failures**: Сабмит run-id 57554681: public 0.34591 (выше 0.34487 ✓), но private 0.31580 ниже 0.32361 (−0.00781 ✗) — правило «лучше на обеих половинах» нарушено. Разложение (57554703 ppr-only: 0.34122/0.31624) показывает: провал private в основном из-за PPR restart=0.7/aw=0.7, который локально давал +0.0059 mean (C2.2), на Kaggle — −0.00365/−0.00737 (расхождение знака, пополняет C1.4). Локальное обоснование C2.1 остаётся верным для локальных сплитов, но на Kaggle не подтвердилось.
+**Permitted manuscript wording**: Полная конфигурация exp4 на Kaggle улучшила public до 0.34591, но ухудшила private до 0.31580 (run-id 57554681) и поэтому не принята как финальная; изолированный PPR-инкремент также хуже на обеих половинах (0.34122/0.31624, run-id 57554703).
+**Next cheapest decisive action**: не предпринимать; финальной принята точка C2.6 (k=10 изолированно).
 **Depends on**: C2.1
 
 ## C2.1 (supported)
@@ -177,7 +183,7 @@
 - results/tables/exp3_e3_ppr_e1.csv:2
 **Counterevidence and failures**: вклад ALS f=128 — на уровне шума (E5: mean 0.500014 против 0.499850, но early 0.461828 ниже референса 0.463176, exp4_als.csv:2) — почти весь прирост E6+E7; E5 не проходил фильтр «на обоих сплитах» отдельно от остальных стадий.
 **Permitted manuscript wording**: Сложенная конфигурация exp4 локально превосходит победителя exp3 на обоих сплитах (+0.0113 main, +0.0084 early, строгая MAP@5); вклад этапа ALS отдельно мал и знак его эффекта нестабилен между сплитами.
-**Next cheapest decisive action**: сабмит победителя на Kaggle (C2).
+**Next cheapest decisive action**: выполнен — победитель отправлен (57554681), правило обеих половин не прошёл (C2); финальной принята точка C2.6.
 **Depends on**: C2.2, C2.3, C2.5
 
 ## C2.2 (supported)
@@ -194,9 +200,9 @@
 - results/tables/exp4_ppr.csv:2
 - results/tables/exp4_ppr.csv:8
 - results/tables/exp3_e3_ppr_e1.csv:2
-**Counterevidence and failures**: чистый PPR-компонент при restart=0.7/aw=0.7 заметно хуже референтного (0.4818 против 0.5035 mean) — улучшение достигается только внутри fusion; чистые PPR-сабмиты на Kaggle в прошлом раунде хуже финала (C1).
+**Counterevidence and failures**: чистый PPR-компонент при restart=0.7/aw=0.7 заметно хуже референтного (0.4818 против 0.5035 mean) — улучшение достигается только внутри fusion; **на Kaggle не переносится**: изолированный сабмит (run-id 57554703) 0.34122/0.31624 против 0.34487/0.32361 у exp3_e3b — хуже по обеим половинам, при том что локально точка лучше референта на обоих сплитах (расхождение знака, C1.4).
 **Permitted manuscript wording**: В сетке 12×2 точка restart=0.7/aw=0.7 даёт лучший fusion (mean 0.5058 против 0.4999 у референта на обоих сплитах), хотя как самостоятельный метод PPR при этих параметрах хуже restart=0.5 — отбор вёлся по fusion-метрике.
-**Next cheapest decisive action**: сабмит изолированного PPR-инкремента (variant=ppr) для проверки знака на Kaggle.
+**Next cheapest decisive action**: выполнен — вариант отправлен (run-id 57554703) и на Kaggle отвергнут (см. Counterevidence).
 **Depends on**: C2.4
 
 ## C2.3 (supported)
@@ -212,9 +218,9 @@
 **Evidence sources**:
 - results/tables/exp4_fusion.csv:2
 - results/tables/exp4_fusion.csv:6
-**Counterevidence and failures**: прирост k=10 против k=20 меньше, чем прирост PPR-этапа E6 (+0.0041 против +0.0059 mean); знак на Kaggle не проверен.
-**Permitted manuscript wording**: Уменьшение масштаба RRF до k=10 дало +0.0041 по среднему локальной строгой MAP@5 против контрольной точки k=20 с теми же компонентами; на Kaggle эффект не проверен.
-**Next cheapest decisive action**: сабмит изолированного k=10 (variant=k10) либо в составе победителя (variant=winner).
+**Counterevidence and failures**: прирост k=10 против k=20 меньше, чем прирост PPR-этапа E6 локально (+0.0041 против +0.0059 mean); **на Kaggle знак подтверждён**: изолированный сабмит k=10 (run-id 57554720) 0.34586/0.32383 против 0.34487/0.32361 — лучше по обеим половинам (C2.6), в то время как составной победитель E7 того же k=10 с новыми компонентами private ухудшил (C2) — эффекты компонентов не аддитивны.
+**Permitted manuscript wording**: Уменьшение масштаба RRF до k=10 изолированно дало +0.0041 по среднему локальной строгой MAP@5 против контрольной точки k=20 и подтвердилось на Kaggle: 0.34586/0.32383 против 0.34487/0.32361 (run-id 57554720 против 57544938).
+**Next cheapest decisive action**: выполнен — вариант отправлен (57554720) и принят как финальный (C2.6).
 **Depends on**: C2.2
 
 ## C2.4 (rejected)
@@ -257,4 +263,24 @@
 **Counterevidence and failures**: различия малы (≤0.0009 mean) — эффект близок к шуму; знак на Kaggle не проверен.
 **Permitted manuscript wording**: Расширение пула до 1000/2000 не дало роста локальной MAP@5 (0.5097 при 500 против 0.5093/0.5088), поэтому оставлен топ-500 — тот же пул, что и в прежнем финале.
 **Next cheapest decisive action**: не предпринимать; пул-500 зафиксирован в exp4_submit.py.
+**Depends on**: C2.3
+
+## C2.6 (supported)
+**Type**: empirical
+**Status**: supported
+**Claim**: Изолированное изменение RRF k=20 → k=10 (веса w=(1,2,1), PPR E1 restart=0.5/aw=0.5, ALS 64/0.05/20 — всё остальное как в exp3_e3b) улучшает Kaggle MAP@5 по обеим половинам: public 0.34586 против 0.34487 и private 0.32383 против 0.32361. Принято как финальная конфигурация.
+**Scope and exclusions**: только этот конкурс, только пара конфигураций (exp4_k10 против exp3_e3b); приросты малы (+0.00099/+0.00022) и не утверждаются для других тестов.
+**Assumptions**: оба файла сгенерированы при одинаковом train 11–30, пуле-500 и формате (отличие — только k в fusion); просмотры 31–42 не использованы; сабмиты в одном дне, леденец/квота не влияют на возвращённые скоры.
+**Closest prior work and gap**: exp3_e3b (k=20, run-id 57544938); гап: k<20 в exp3 не проверялся, в exp4 E7 локальный выигрыш k=10 был +0.0041 mean.
+**Falsifier or counterexample**: воспроизведение файла скриптом exp4_submit.py k10 даёт иной файл; либо сабмит той же конфигурации даёт ниже 0.34487/0.32361.
+**Required support**: сабмит с public и private выше exp3_e3b + воспроизводимый скрипт.
+**Current support**: Сабмит run-id 57554720: public 0.34586, private 0.32383; референс exp3_e3b run-id 57544938: 0.34487/0.32361 — выше по обеим половинам. Локально выбор k=10 обоснован сеткой E7 (exp4_fusion.csv:2-5 — все четыре верхние строки при k=10, против k=20-контроля exp4_fusion.csv:6), но точка «k=10 + старые компоненты exp3_e3b» локально не считалась — k=10 выбран по Kaggle-проверке изолированного инкремента. Генерация: artifacts/scripts/exp4_submit.py variant=k10 (format OK: 1260 строк, 5 id из расписания 31–42); файл назначен финалом: submission.csv в корне == data/submission_exp4_k10.csv.
+**Evidence sources**:
+- kaggle-run:57554720
+- kaggle-run:57544938
+- artifacts/scripts/exp4_submit.py
+- results/tables/exp4_fusion.csv:6
+**Counterevidence and failures**: прирост частный и мал (private +0.00022 — на уровне близкого к шуму); знак k=10 изолированно согласовался локально и на Kaggle (редкий случай, C1.4), но k=10 в составе полной стек-конфигурации (variant=winner) private не улучшил — эффекты компонентов не аддитивны.
+**Permitted manuscript wording**: Финальная конфигурация — RRF k=10 при весах (1,2,1) поверх pop×log(1+airings), PPR (restart=0.5, attr_weight=0.5, без decay) и ALS 64/0.05/20; она превосходит прежний финал (k=20) по обеим половинам теста: 0.34586/0.32383 против 0.34487/0.32361 (run-id 57554720 против 57544938).
+**Next cheapest decisive action**: воспроизвести data/submission_exp4_k10.csv скриптом exp4_submit.py variant=k10 и свести md5; скриншот возвращённого public для §9 отчёта.
 **Depends on**: C2.3

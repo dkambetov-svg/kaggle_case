@@ -1,0 +1,7 @@
+metric,value
+candidate Recall@100,0.3943913102527821
+candidate Recall@200,0.4579817644389515
+candidate Recall@500,0.567898691376149
+MAP@5 repeat baseline,0.6197626384423008
+MAP@5 LightFM,0.5683681672025723
+MAP@5 LightGBM reranker,0.6691338424437299

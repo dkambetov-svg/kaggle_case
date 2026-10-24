@@ -1,0 +1,75 @@
+{
+  "metrics": {
+    "candidate Recall@100": 0.3943913102527821,
+    "candidate Recall@200": 0.4579817644389515,
+    "candidate Recall@500": 0.567898691376149,
+    "MAP@5 repeat baseline": 0.6197626384423008,
+    "MAP@5 LightFM": 0.5683681672025723,
+    "MAP@5 LightGBM reranker": 0.6691338424437299
+  },
+  "users_requested": 1260,
+  "users_evaluated": 1244,
+  "users_without_truth_excluded": 16,
+  "relevance": "unique user-show with at least one target overlap watch_pct >= 0.5",
+  "recall_aggregation": "macro average over the same nonempty-truth users as MAP@5",
+  "history_weeks": [
+    11,
+    20
+  ],
+  "validation_weeks": [
+    21,
+    30
+  ],
+  "reranker_training_history_weeks": [
+    11,
+    16
+  ],
+  "reranker_training_label_weeks": [
+    17,
+    20
+  ],
+  "lightfm_config": {
+    "loss": "warp",
+    "no_components": 32,
+    "learning_rate": 0.05,
+    "random_state": 42,
+    "epochs": 15,
+    "num_threads": 4
+  },
+  "lightgbm_config": {
+    "objective": "binary",
+    "n_estimators": 250,
+    "num_leaves": 31,
+    "learning_rate": 0.05,
+    "min_child_samples": 50,
+    "colsample_bytree": 0.9,
+    "subsample": 1,
+    "n_jobs": 4,
+    "random_state": 42,
+    "verbosity": -1
+  },
+  "features": [
+    "user_show_freq_03",
+    "user_show_freq_05",
+    "user_show_freq_08",
+    "recent_freq_1w",
+    "recent_freq_4w",
+    "user_show_rank",
+    "lightfm_score",
+    "lightfm_rank",
+    "lightfm_user_bias",
+    "lightfm_item_bias",
+    "user_channel_count",
+    "user_channel_share",
+    "category",
+    "genre_1",
+    "genre_2",
+    "genre_3",
+    "past_airtime",
+    "future_airtime",
+    "future_past_airtime_ratio"
+  ],
+  "train_rows": 630000,
+  "validation_rows": 630000,
+  "elapsed_seconds": 21.844528957968578
+}

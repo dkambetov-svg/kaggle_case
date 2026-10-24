@@ -1,0 +1,6 @@
+source,weight,tuning_split
+repeat,0.0,"history<=16,target=17-20"
+lightfm,0.0,"history<=16,target=17-20"
+ppr,0.5,"history<=16,target=17-20"
+popularity,0.5,"history<=16,target=17-20"
+als,0.5,"history<=16,target=17-20"
